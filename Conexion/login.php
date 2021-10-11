@@ -6,8 +6,16 @@
 	// //define("home_url", "http://192.168.0.8/proyectoAM_final/");
 
 
+	// define('DATABASE','tienda_anime');
+	// define('HOST','localhost');
+	// define('USERNAME','root');
+	// define('PASSWORD','');
+
 	define('DATABASE','tienda_anime');
-	define('HOST','localhost');
+	define('HOSTNAME','localhost');
 	define('USERNAME','root');
 	define('PASSWORD','');
+
+
+
 ?>

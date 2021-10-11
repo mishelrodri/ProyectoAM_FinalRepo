@@ -17,8 +17,9 @@
         <div class="content-page">
             <!-- Start content -->
             <div class="content">
+                 <?php include '../../layouts/topbar.php'; ?>
+                
 
-           <?php include '../../layouts/topbar.php'; ?>
                 <!-- ==================
                      PAGE CONTENT START
                      ================== -->
