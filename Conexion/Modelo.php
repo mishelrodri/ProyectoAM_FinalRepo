@@ -1,7 +1,7 @@
 <?php 
 	@session_start();
 	require_once 'Conexion.php';
-	require_once 'Configuraciones.php';
+	require_once 'configuraciones.php';
 
 	/**
 	* 
@@ -383,7 +383,8 @@
 			try {
 				$comando = Conexion::getInstance()->getDb()->prepare($sql);
 	            $comando->execute();
-	            return array("1","Eliminado");
+	            $afectados = $comando->rowCount();
+	            return array("1","Eliminado","","",$afectados);
 	        }catch(Exception $e){
 	        	return array("0","Error al eliminar",$e->getMessage(),$e->getLine(),$sql);
 	        	exit();
@@ -568,7 +569,7 @@
 
 			$query = "SELECT *FROM 
                     ".ESQUEMA.".tb_usuarios AS u 
-                    JOIN ".ESQUEMA.".persona as p ON p.id = u.id_persona
+                    JOIN ".ESQUEMA.".tb_persona as p ON p.id = u.id_persona
                 WHERE (p.correo='$usuario' OR u.usuario='$usuario')";
         	$usuario_exist = Genericas2::get_query($query);
         	if ($usuario_exist[0]===1 && $usuario_exist[4]>=1) {
