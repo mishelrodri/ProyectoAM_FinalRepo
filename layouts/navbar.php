@@ -5,14 +5,15 @@
 <div class="topbar-left">
     <div class="">
         <!--<a href="index.php" class="logo text-center">Admiria</a>-->
-        <a href="index.php" class="logo"><img src="../../public/assets/images/logo-sm.png" height="36" alt="logo"></a>
+        <a href="index.php" class="logo"><img src="../../public/assets/images/bebesito.png" height="100" alt="logo"></a>
+        <p style="color: white;">BIENVENIDO</p>
     </div>
 </div>
 
 <div class="sidebar-inner slimscrollleft">
     <div id="sidebar-menu">
         <ul>
-            <li class="menu-title">Main</li>
+            <li class="menu-title">Kodo Shop</li>
 
             <li>
                 <a href="../home/?modulo=HOME" class="waves-effect"><i class="mdi mdi-home"></i><span> Home </span></a>
@@ -40,7 +41,11 @@
 
 
             <li>
-                <a href="../usuarios/?modulo=USUARIOS" class="waves-effect"><i class="mdi mdi-cube-outline"></i><span> Usuarios </span></a>
+                <a href="../usuario/?modulo=USUARIO" class="waves-effect"><i class="mdi mdi-cube-outline"></i><span> Usuarios </span></a>
+            </li>
+
+               <li>
+                <a href="../categoria/?modulo=CATEGORIA" class="waves-effect"><i class="mdi mdi-cube-outline"></i><span> CATEGORIAS </span></a>
             </li>
 
              
