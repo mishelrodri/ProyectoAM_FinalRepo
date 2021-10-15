@@ -1,4 +1,6 @@
    <!-- ========== Left Sidebar Start ========== -->
+
+ 
    <div class="left side-menu">
 
 <!-- LOGO -->
@@ -21,31 +23,21 @@
 
             
 
-            <li class="has_sub">
-                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cube-outline"></i><span> Productos <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                <ul class="list-unstyled">
-                    <li><a href="email-inbox.php">Nuevo Producto</a></li>
-                    <li><a href="email-read.php">Administrar Producto</a></li>
-                    
-                </ul>
-            </li>
-
-             <li class="has_sub">
-                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-location"></i><span> Productores <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                <ul class="list-unstyled">
-                    <li><a href="email-inbox.php">Nuevo Productor</a></li>
-                    <li><a href="email-read.php">Produccion</a></li>
-                    
-                </ul>
-            </li>
-
-
             <li>
-                <a href="../usuario/?modulo=USUARIO" class="waves-effect"><i class="mdi mdi-cube-outline"></i><span> Usuarios </span></a>
+                <a href="../usuario/?modulo=USUARIO" class="waves-effect"><i class="fas fa-user-ninja"></i><span> Usuarios </span></a>
             </li>
 
                <li>
-                <a href="../categoria/?modulo=CATEGORIA" class="waves-effect"><i class="mdi mdi-cube-outline"></i><span> CATEGORIAS </span></a>
+                <a href="../categoria/?modulo=CATEGORIA" class="waves-effect"><i class="far fa-bookmark"></i><span> CATEGORIAS </span></a>
+            </li>
+
+             <li>
+                <a href="../producto/?modulo=PRODUCTOS" class="waves-effect"><i class="fas fa-spider"></i><span> PRODUCTOS </span></a>
+            </li>
+
+
+             <li>
+                <a href="../producto/?modulo=VENTAS" class="waves-effect"><i class="fab fa-bitcoin"></i><span> VENTAS </span></a>
             </li>
 
              
