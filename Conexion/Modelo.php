@@ -1,7 +1,7 @@
 <?php 
 	@session_start();
 	require_once 'Conexion.php';
-	require_once 'configuraciones.php';
+	require_once 'Configuraciones.php';
 
 	/**
 	* 
@@ -194,9 +194,9 @@
 				$as++;
 				if ($key === 'table') {//obtengo tabla
 	 				$tabla = $array[$key];
-	 			}else if ($as===2) {//obtengo tabla
+	 			}else if ($as===2) {//obtengo id
 	 				$campo = $array[$key];
-	 			}else if ($as===3) {//obtengo tabla
+	 			}else if ($as===3) {//obtengo value
 	 				$whereid = $key;
 	 				$valor_whereid = $array[$key];
 	 			}
@@ -208,8 +208,18 @@
 	       		$comando->execute();
 	       		
 	       		$resultado = $comando->fetchAll(PDO::FETCH_COLUMN, 0);
-	       		$cuantos = $comando->rowCount();
-	       		return array($resultado[0],$sql,"","",$cuantos);
+	       		// $cuantos = $comando->rowCount();
+	       		// return array($resultado[0],$sql,"","",$cuantos);
+
+	       		
+	       		if ($comando->rowCount()>0) {
+	       			$cuantos = $comando->rowCount();
+	       			return array(1,$resultado[0],$sql,"",$cuantos,$cuantos);
+	       		}else{
+	       			$cuantos = $comando->rowCount();
+	       			return array(0,array(),$sql,"",$cuantos,$cuantos);
+	       		}
+	       		
 				//echo json_encode(array("exito" => $exito));
 			} catch (Exception $e) {
 				return array("0","error",$e->getMessage(),$e->getLine(),$sql);
@@ -513,6 +523,8 @@
 				$comando = Conexion::getInstance()->getDb()->prepare($sql);
 	       		$comando->execute();
 	       		$resultado = $comando->fetchAll();
+	       		//AQUI TUVE UN ERROR, MAYBE POR LA VERSION DE PHP PERO NO NOS DEJO CARGAR LOS COMBOS POR LO QUE 
+	       		$cuantos=$comando->rowCount();
 			   	//$option_devolver ="<option value=''></option>";//chosen select
 			   	$option_devolver = ($el_seleccione!="") ? "<option value='-1'>Seleccione</option>":"<option>Seleccione</option>";//select 2
 			    $data_selected = "";
@@ -527,13 +539,14 @@
 			    }
 			    $option_retornar =($option_devolver !="") ? $option_devolver : "<option value='-1'>No existen datos registrados</option>";
 			    
-	       		return array($option_retornar,$data_selected,$sql,$option_devolver,$resultado);
+	       		return array($option_retornar,$data_selected,$sql,$option_devolver,$cuantos,$resultado);
 				
 			} catch (Exception $e) {
 				return array("0","error",$e->getMessage(),$e->getLine(),$sql);
 	            //echo json_encode(array("error" => $error));
 			}
 		}
+
 		public static function formatear_fecha($fecha){
 			$pos = strpos($fecha, "/");
 			if ($pos === false) $fecha = explode("-",$fecha);
@@ -569,8 +582,8 @@
 		public static function consultar_usuairo($usuario){
 
 			$query = "SELECT *FROM 
-                    ".ESQUEMA.".tb_usuarios AS u 
-                    JOIN ".ESQUEMA.".tb_persona as p ON p.id = u.id_persona
+                    ".ESQUEMA.".usuario AS u 
+                    JOIN ".ESQUEMA.".persona as p ON p.id = u.id_persona
                 WHERE (p.correo='$usuario' OR u.usuario='$usuario')";
         	$usuario_exist = Genericas2::get_query($query);
         	if ($usuario_exist[0]===1 && $usuario_exist[4]>=1) {

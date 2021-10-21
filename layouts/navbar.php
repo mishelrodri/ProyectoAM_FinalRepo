@@ -37,7 +37,7 @@
 
 
              <li>
-                <a href="../producto/?modulo=VENTAS" class="waves-effect"><i class="fab fa-bitcoin"></i><span> VENTAS </span></a>
+                <a href="../venta/?modulo=VENTAS" class="waves-effect"><i class="fab fa-bitcoin"></i><span> VENTAS </span></a>
             </li>
 
              

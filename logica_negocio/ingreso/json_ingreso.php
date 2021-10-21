@@ -71,7 +71,7 @@
 			print json_encode("Bloqueo");
 		}else{
 			$sql = "SELECT 
-						*FROM persona AS tp
+						*, tp.id as per FROM persona AS tp
 					JOIN usuario as tu 
 					ON tu.id_persona = tp.id
 					WHERE (tp.email='$_POST[correo]' OR tu.usuario = '$_POST[correo]')
@@ -88,6 +88,8 @@
 					$_SESSION['tipo_persona']=$resultado[2][0]['tipo_persona'];
 					$_SESSION['usuario']=$resultado[2][0]['usuario'];
 					$_SESSION['correo']=$resultado[2][0]['email'];
+					$_SESSION['idpersona']=$resultado[2][0]['per'];
+
 
 					$array = array("Exito","Bienvenido al sistema ".$resultado[2][0]['nombre'],$resultado,$_SESSION);
 					print json_encode($array);

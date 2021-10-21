@@ -6,7 +6,7 @@
 <?php include '../../layouts/headerStyle.php'; ?>
 <style>
     
-    div#registrar_usuario {
+    div#registrar_venta {
         cursor: pointer;
     }
     .error_modificado li.parsley-required {
@@ -45,19 +45,19 @@
                                 <div class="mini-stat clearfix bg-white">
                                     <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="mdi mdi-account-multiple"></i></span>
                                     <div class="mini-stat-info">
-                                        <span class="counter text-purple" id="cantidad_usuarios">25140</span>
-                                        Usuarios registrados
+                                        <span class="counter text-purple" id="cantidad_usuarios">$250</span>
+                                        Ventas Relizadas Hoy
                                     </div>
                                     <div class="clearfix"></div>
                                      
                                 </div>
                             </div>
-                            <div class="col-md-6 col-xl-6" id="registrar_usuario">
+                            <div class="col-md-6 col-xl-6" id="registrar_venta">
                                 <div class="mini-stat clearfix bg-white">
                                     <span class="mini-stat-icon bg-blue-grey mr-0 float-right"><i class="mdi mdi-account-multiple-plus"></i></span>
                                     <div class="mini-stat-info">
                                         <span class="counter text-blue-grey">Registrar</span>
-                                        Nuevo usuario
+                                        Nueva Venta
                                     </div>
                                     <div class="clearfix"></div>
                                      
@@ -91,12 +91,11 @@
 
             <!-- aca las modales-->
    
-            <div class="modal fade" id="md_registrar_usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                
+            <div class="modal fade" id="md_registrar_venta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro nuevo usuario</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nueva Venta</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -105,108 +104,50 @@
                       
                      <form name="formulario_registro" id="formulario_registro">
                         <input type="hidden" id="ingreso_datos" name="ingreso_datos" value="si_registro">
-                        <input type="hidden" id="llave_persona" name="llave_persona" value="si_registro">
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" autocomplete="off" name="nombre" data-parsley-required-message="El nombre es requerido" id="nombre" class="form-control" required placeholder="Ingrese su nombre"/>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" autocomplete="off" name="email" data-parsley-required-message="El email es requerido" data-quien_es="email" id="email" class="form-control validar_campos_unicos" required placeholder="Ingrese su email"/>
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>DUI</label>
-                                <input data-mask="99999999-9"  type="text" autocomplete="off" data-quien_es="dui" name="dui" data-parsley-required-message="Campo  requerido" id="dui" maxlength="10" class=" validar_campos_unicos form-control" required placeholder="Ingrese su dui"/>
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="text" autocomplete="off" name="telefono" data-quien_es="telefono" data-parsley-required-message="Campo  requerido" data-mask="9999-9999" id="telefono" class="form-control validar_campos_unicos" required placeholder="Ingrese su telefono"/>
-                              </div>
-                            </div>
-
-                            <!--div class="col-md-6">
-                              <div class="form-group">
-                                <label>Fecha nacimiento</label>
-                                <input type="date" autocomplete="off" name="fecha1"  data-parsley-required-message="Campo  requerido" id="fecha1" class="form-control" required placeholder="Ingrese su fecha"/>
-                              </div>
-                            </div-->
-                            <div class="col-md-6">
-                                <label>Fecha nacimiento bootstrap</label>
-                              <div class="input-group error_modificado">
-
-                                    <input type="text" class="form-control" placeholder="mm/dd/yyyy" data-parsley-required-message="Campo  requerido" required id="fecha" name="fecha">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                    </div>
-                                </div>
-                            </div>
+                        <input type="hidden" id="llave_venta" name="llave_venta" value="si_registro">
+                        <input type="hidden" id="ultimo_elemento" name="ultimo_elemento" data-numero=0 value=0>
 
 
-                            <div class="col-md-6">
+                        <div class="row">
+                             <div class="col-md-4">
+                             </div>
+                             <div class="col-md-4">
+                             <button type="button" class="btn btn-outline-success" id="agregar_fila" >Agregar producto</button>
+                              <button type="button" class="btn btn-outline-danger" id="quitar_fila" >Quitar</button>
+                         </div>
+                          <div class="col-md-4">
+                        </div>
+                        </div>
+
+                        <div id="filas">
+                          <div class="row" id=fila>
+
+                                <div class="col-md-6">
                               <div class="form-group">
-                                <label class="control-label">Tipo persona</label>
-                                <select id="tipo_persona" name="tipo_persona" class="form-control select2">
-                                     
-                                    <option value="1" >Administrador</option>
-                                    <option value="2" selected>Empleado</option>
+                                <label class="control-label">Producto</label>
+                                <select id="producto_0"   name="producto[]"  class="form-control select2 ">    
                                 </select>               
                               </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                               <div class="form-group">
-                                <label>Usuario</label>
-                                <input maxlength="20" type="text" autocomplete="off" name="usuario" id="usuario" data-quien_es="usuario" data-parsley-required-message="Campo  requerido" class="validar_campos_unicos form-control" required placeholder="Ingrese su usuario"/>
+                                <label>Cantidad</label>
+                                <input type="text" autocomplete="off" name="cantidad[]" data-parsley-required-message="El nombre es requerido" id="cantidad_0"  class="form-control" required placeholder="Ingrese su nombre"/>
                               </div>
                             </div>
 
-                             <div class="col-md-6">
+                                <div class="col-md-3">
                               <div class="form-group">
-                                <label>Contraseña</label>
-                                <input maxlength="50" minlength="5" type="password" autocomplete="off" name="contrasenia" data-parsley-required-message="Campo  requerido" id="contrasenia" class="form-control" required placeholder="Ingrese su contraseña"/>
+                                <label>Monto</label>
+                                <input type="text" autocomplete="off"  name="monto[]" data-parsley-required-message="El nombre es requerido" id="monto_0" data-monto_1="0" class="form-control" required placeholder="Ingrese su nombre"/>
                               </div>
                             </div>
+                  
 
+                          </div> <!--  SE TERMINA DIV DEL ROW -->
 
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="control-label">Departamentos</label>
-                                <select id="depto" name="depto" class="form-control select2">  
-
-                                </select>               
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="control-label">Municipio</label>
-                                <select id="municipio" name="municipio" class="form-control select2">
-                                     
-                                </select>               
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Seleccione imagen</label>
-                                    <input id="imagen_persona" name="imagen_persona"  data-buttonText="Seleccionar" type="file" class="filestyle" data-buttonname="btn-secondary">
-                                    <label style="display:none;font-size: 12px; list-style: none; color: #ea553d; margin-top: 5px;" id="error_en_la_imagen">La imagen no es valida</label>
-                                    
-                                </div>
-                            </div>
-
-
-
-                          </div>
+                     </div>  <!--  SE TERMINA LA FILA DE AGREGADOS -->
                      
                   </div>
                   <div class="modal-footer">
@@ -268,6 +209,6 @@
     
     <script src="../../public/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-    <script src="funciones_usuarios.js" type="text/javascript" charset="utf-8"></script>
+    <script src="funciones_venta.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

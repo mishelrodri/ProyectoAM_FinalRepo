@@ -11,11 +11,11 @@
 	// define('USERNAME','root');
 	// define('PASSWORD','');
 
-	define('DATABASE','tienda_anime');
-	define('HOSTNAME','localhost');
-	define('USERNAME','root');
-	define('PASSWORD','');
+	define('DATABASE','micrours_lakely');
+	define('HOSTNAME','ftp.microstaxitours.com');
+	define('USERNAME','micrours_lakely');
+	define('PASSWORD','^^ukDlU20qIT');
 
-
+//
 
 ?>
