@@ -10,7 +10,7 @@
              
         }
     }else{
-         // header("Location: ../ingreso/index.php");
+          header("Location: ../ingreso/index.php");
     }
 
 
