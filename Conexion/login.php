@@ -8,13 +8,19 @@
 
 	// define('DATABASE','tienda_anime');
 	// define('HOST','localhost');
-	// define('USERNAME','root');
+	// define('USERNAME','localhost');
 	// define('PASSWORD','');
 
-	define('DATABASE','micrours_lakely');
-	define('HOSTNAME','ftp.microstaxitours.com');
-	define('USERNAME','micrours_lakely');
-	define('PASSWORD','^^ukDlU20qIT');
+
+	define('DATABASE','tienda_anime');
+	define('HOSTNAME','localhost');
+	define('USERNAME','root');
+	define('PASSWORD','');
+
+	// define('DATABASE','micrours_lakely');
+	// define('HOSTNAME','ftp.microstaxitours.com');
+	// define('USERNAME','micrours_lakely');
+	// define('PASSWORD','^^ukDlU20qIT');
 
 //
 
